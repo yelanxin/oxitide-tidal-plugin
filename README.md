@@ -16,14 +16,15 @@ include TIDAL, and so do the Linux and macOS builds — nothing to install there
 
 ## Download
 
-[**tidal.json**](https://github.com/yelanxin/oxitide-tidal-plugin/releases/latest/download/tidal.json)
-— the plugin is this one small file. Every version is on the
+[**tidal.oxplugin**](https://github.com/yelanxin/oxitide-tidal-plugin/releases/latest/download/tidal.oxplugin)
+— the plugin is this one small file, not meant to be opened: just put it in
+place. Every version is on the
 [Releases](https://github.com/yelanxin/oxitide-tidal-plugin/releases) page.
 
 ## Install
 
 1. Close OxiTide.
-2. Put `tidal.json` in this folder, creating the `plugins` folder if it is not
+2. Put `tidal.oxplugin` in this folder, creating the `plugins` folder if it is not
    there:
 
    ```
@@ -39,7 +40,7 @@ Or do all of it from PowerShell:
 ```powershell
 $dir = "$env:LOCALAPPDATA\OxiTide\plugins"
 New-Item -ItemType Directory -Force $dir | Out-Null
-Invoke-WebRequest https://github.com/yelanxin/oxitide-tidal-plugin/releases/latest/download/tidal.json -OutFile "$dir\tidal.json"
+Invoke-WebRequest https://github.com/yelanxin/oxitide-tidal-plugin/releases/latest/download/tidal.oxplugin -OutFile "$dir\tidal.oxplugin"
 ```
 
 Then start OxiTide.
@@ -47,17 +48,17 @@ Then start OxiTide.
 ## Update
 
 When a new version is released here, download it again over the old
-`tidal.json` and restart OxiTide. Your TIDAL sign-in is kept.
+`tidal.oxplugin` and restart OxiTide. Your TIDAL sign-in is kept.
 
 ## Uninstall
 
-Delete `%LOCALAPPDATA%\OxiTide\plugins\tidal.json` and restart OxiTide. The
+Delete `%LOCALAPPDATA%\OxiTide\plugins\tidal.oxplugin` and restart OxiTide. The
 TIDAL source disappears; your local music is untouched.
 
 ## Troubleshooting
 
 **TIDAL does not appear after a restart.** Check that the file is named
-exactly `tidal.json` — not `tidal.json.txt` (turn on *View → File name
+exactly `tidal.oxplugin` — not `tidal.oxplugin.txt` (turn on *View → File name
 extensions* in File Explorer to see) — and that it sits directly inside
 `plugins`. OxiTide's log says whether it found the plugin; for the Store
 version the log is
@@ -75,9 +76,8 @@ Anything else: open an issue in
 
 ## About
 
-The plugin holds the public client identifiers of TIDAL's Android app, the
-ones the open-source [tidalapi](https://github.com/EbbLabs/python-tidal)
-project uses. OxiTide signs in with them through TIDAL's own login page and
+The plugin holds the client settings OxiTide signs in to TIDAL with. OxiTide
+signs in through TIDAL's own login page and
 talks to TIDAL directly; nothing goes through any other server. See
 [OxiTide's privacy policy](https://oxitide.com/privacy.html).
 
